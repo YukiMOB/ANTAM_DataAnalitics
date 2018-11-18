@@ -160,6 +160,8 @@ bar_bulk_output <- function(df,fl){
   ex_bar_plot(df.PT.R,df.PT.L,"IT_staticLefft",31,40)
   #ex_bar_plot(df.PT.R,df.PT.L,"IT_staticRight",41,50)
 }
+
+
 # barの条件毎の出力
 ex_bar_plot <- function(df.PT.R,df.PT.L,exname,first,end){
   #範囲指定
