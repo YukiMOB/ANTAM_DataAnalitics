@@ -15,3 +15,6 @@ distance <- function(df,start,end){
 it10.distance.list <- distance(df.downsamp,1,5)
 it40.distance.list <- distance(df.downsamp,6,10)
 it160.distance.list <- distance(df.downsamp,11,15)
+
+# 正規分布確認用
+hist(c(it10.distance.list))
