@@ -12,6 +12,6 @@ distance <- function(df,start,end){
 }
 # 統計解析
 # 5試行ごとなので
-it10.residence.list <- distance(df.downsamp,1,5)
-it14.residence.list <- distance(df.downsamp,6,10)
-it160.residence.list <- distance(df.downsamp,11,15)
+it10.distance.list <- distance(df.downsamp,1,5)
+it40.distance.list <- distance(df.downsamp,6,10)
+it160.distance.list <- distance(df.downsamp,11,15)
