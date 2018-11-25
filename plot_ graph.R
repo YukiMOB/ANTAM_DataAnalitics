@@ -1,35 +1,93 @@
-library(NSM3)
+library(ggplot2)
+
 # plot(c(1,2,3),c(mean(it160.distance.list),mean(it40.distance.list),mean(it10.distance.list)))
 # plot(c(1,2,3),c(mean(it160.list.velocity_average),mean(it40.list.velocity_average),mean(it10.list.velocity_average)))
 # plot(c(1,2,3),c(mean(it160.residence_ratio.list),mean(it40.residence_ratio.list),mean(it10.residence_ratio.list)))
 
-# クラスカル・ウォリス検定 : 距離
-kruskal.test(x=list(it160.distance.list,it40.distance.list,it10.distance.list))
-kruskal.test(x=list(it160.list.velocity_average,it40.list.velocity_average,it10.list.velocity_average))
-kruskal.test(x=list(it160.residence_ratio.list,it40.residence_ratio.list,it10.residence_ratio.list))
-kruskal.test(x=list(subset(it160.ratio.PN$value_Left,it160.ratio.PN$PorN_Left == "Negative")
-                    ,subset(it40.ratio.PN$value_Left,it40.ratio.PN$PorN_Left == "Negative")
-                    ,subset(it10.ratio.PN$value_Left,it10.ratio.PN$PorN_Left == "Negative")))
+# 総移動距離の折れ線グラフとエラーバー
+plot_distance <- function(){
+  df.parameter <- data.frame(mean = c(mean(it160.distance.list),
+                                      mean(it40.distance.list),
+                                      mean(it10.distance.list)),
+                             sd = c(sd(it160.distance.list),
+                                    sd(it40.distance.list),
+                                    sd(it10.distance.list)),
+                             value = c(it160.distance.list,
+                                       it40.distance.list,
+                                       it10.distance.list),
+                             conditions = c(1,2,3))
+  errors <- aes(ymax = df.parameter$mean + df.parameter$sd,
+                ymin = df.parameter$mean - df.parameter$sd)
+  g <- ggplot(df.parameter,aes(x = conditions,y = mean)) +
+    scale_x_continuous(breaks = c(1,2,3),
+                       labels = c("160 s","40 s","10 s")) +
+    geom_line() +
+    geom_errorbar(errors,width = 0.2) + 
+    geom_point(aes(x = conditions,y = value))
+  plot(g)
+}
 
-kruskal.test(x=list(subset(it160.ratio.PN$value_Right,it160.ratio.PN$PorN_Right == "Negative")
-                    ,subset(it40.ratio.PN$value_Right,it40.ratio.PN$PorN_Right == "Negative")
-                    ,subset(it10.ratio.PN$value_Right,it10.ratio.PN$PorN_Right == "Negative")))
+plot_velocity <- function(){
+  df.parameter <- data.frame(mean = c(mean(it160.list.velocity_average),
+                                      mean(it40.list.velocity_average),
+                                      mean(it10.list.velocity_average)),
+                             sd = c(sd(it160.list.velocity_average),
+                                    sd(it40.list.velocity_average),
+                                    sd(it10.list.velocity_average)),
+                             value = c(it160.list.velocity_average,
+                                       it40.list.velocity_average,
+                                       it10.list.velocity_average),
+                             conditions = c(1,2,3))
+  errors <- aes(ymax = df.parameter$mean + df.parameter$sd,
+                ymin = df.parameter$mean - df.parameter$sd)
+  g <- ggplot(df.parameter,aes(x = conditions,y = mean)) +
+    scale_x_continuous(breaks = c(1,2,3),
+                       labels = c("160 s","40 s","10 s")) +
+    geom_line() +
+    geom_errorbar(errors,width = 0.2) + 
+    geom_point(aes(x = conditions,y = value))
+  plot(g)
+}
 
-#Steel.Dwass(it160.distance.list,it40.distance.list,it10.distance.list)
+# plot_residence_ratio <- function(){
+  # df.parameter <- data.frame(mean = c(mean(it160.residence_ratio.list),
+  #                                     mean(it40.residence_ratio.list),
+  #                                     mean(it10.residence_ratio.list)),
+  #                           sd = c(sd(it160.residence_ratio.list),
+  #                                  sd(it40.residence_ratio.list),
+  #                                  sd(it10.residence_ratio.list)),
+  #                           conditions = c(1,2,3))
+  # errors <- aes(ymax = df.parameter$mean + df.parameter$sd,
+  #               ymin = df.parameter$mean - df.parameter$sd)
+  # g <- ggplot(df.parameter,aes(x = conditions,y = mean)) +
+  #   scale_x_continuous(breaks = df.parameter$conditions,
+  #                      labels = c("160 s","40 s","10 s")) +
+  #   geom_line() +
+  #   geom_point(df.parameter,aes(x = conditions,y = value)) +
+  #   geom_errorbar(errors,width = 0.2)
+  # 
+  # plot(g)
+# }
 
-# スティール・ドゥワスの多重比較
-# data <- c(
-#   it160.residence_ratio.list, # 第 1 群のデータ，11 例
-#   it40.residence_ratio.list,      # 第 2 群のデータ，10 例
-#   it10.residence_ratio.list    # 第 3 群のデータ，10 例
-# )
-# group <- rep(1:3, c(5, 5, 5))                     # 群の識別変数
-
-data <- c(
-  subset(it160.ratio.PN$value_Left,it160.ratio.PN$PorN_Left == "Negative"), # 第 1 群のデータ，11 例
-  subset(it40.ratio.PN$value_Left,it40.ratio.PN$PorN_Left == "Negative"),      # 第 2 群のデータ，10 例
-  subset(it10.ratio.PN$value_Left,it10.ratio.PN$PorN_Left == "Negative")    # 第 3 群のデータ，10 例
-)
-group <- rep(1:3, c(5, 5, 5))  
-
-Steel.Dwass(data, group)
+plot_residence_ratio <- function(){
+  df.parameter <- data.frame(mean = c(mean(it160.residence_ratio.list),
+                                      mean(it40.residence_ratio.list),
+                                      mean(it10.residence_ratio.list)),
+                             sd = c(sd(it160.residence_ratio.list),
+                                    sd(it40.residence_ratio.list),
+                                    sd(it10.residence_ratio.list)),
+                             value = c(it160.residence_ratio.list,
+                                       it40.residence_ratio.list,
+                                       it10.residence_ratio.list),
+                             conditions = c(1,2,3))
+  errors <- aes(ymax = df.parameter$mean + df.parameter$sd,
+                ymin = df.parameter$mean - df.parameter$sd)
+  g <- ggplot(df.parameter,aes(x = conditions,y = mean)) +
+      scale_x_continuous(breaks = c(1,2,3),
+                         labels = c("160 s","40 s","10 s")) +
+      geom_line() +
+      geom_errorbar(errors,width = 0.2) + 
+      geom_point(aes(x = conditions,y = value))
+  plot(g)
+}
+plot_distance()
