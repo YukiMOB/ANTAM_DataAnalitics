@@ -4,7 +4,7 @@ distance <- function(df,start,end){
   for (i in start:end) {
     x <- subset(df$x,df$id == i)
     y <- subset(df$y,df$id == i)
-    distance <- sum(sqrt(diff(x)^2 + diff(y)^2))
+    distance <- sum(sqrt(diff(x)^2 + diff(y)^2)) / 100 # mmをcmに
     # print(distance)
     list.distance <- c(list.distance,distance)
   }

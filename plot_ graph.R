@@ -23,6 +23,8 @@ plot_distance <- function(){
                        labels = c("160 s","40 s","10 s")) +
     geom_line() +
     geom_errorbar(errors,width = 0.2) + 
+    xlab("Conditions") +
+    ylab("dinstance cm") +
     geom_point(aes(x = conditions,y = value))
   plot(g)
 }
@@ -45,29 +47,12 @@ plot_velocity <- function(){
                        labels = c("160 s","40 s","10 s")) +
     geom_line() +
     geom_errorbar(errors,width = 0.2) + 
+    xlab("Conditions") +
+    ylab("Velocity cm/s")  +
     geom_point(aes(x = conditions,y = value))
   plot(g)
 }
 
-# plot_residence_ratio <- function(){
-  # df.parameter <- data.frame(mean = c(mean(it160.residence_ratio.list),
-  #                                     mean(it40.residence_ratio.list),
-  #                                     mean(it10.residence_ratio.list)),
-  #                           sd = c(sd(it160.residence_ratio.list),
-  #                                  sd(it40.residence_ratio.list),
-  #                                  sd(it10.residence_ratio.list)),
-  #                           conditions = c(1,2,3))
-  # errors <- aes(ymax = df.parameter$mean + df.parameter$sd,
-  #               ymin = df.parameter$mean - df.parameter$sd)
-  # g <- ggplot(df.parameter,aes(x = conditions,y = mean)) +
-  #   scale_x_continuous(breaks = df.parameter$conditions,
-  #                      labels = c("160 s","40 s","10 s")) +
-  #   geom_line() +
-  #   geom_point(df.parameter,aes(x = conditions,y = value)) +
-  #   geom_errorbar(errors,width = 0.2)
-  # 
-  # plot(g)
-# }
 
 plot_residence_ratio <- function(){
   df.parameter <- data.frame(mean = c(mean(it160.residence_ratio.list),
@@ -87,6 +72,8 @@ plot_residence_ratio <- function(){
                          labels = c("160 s","40 s","10 s")) +
       geom_line() +
       geom_errorbar(errors,width = 0.2) + 
+      xlab("Conditions") +
+      ylab("rario of residencetime") +
       geom_point(aes(x = conditions,y = value))
   plot(g)
 }
