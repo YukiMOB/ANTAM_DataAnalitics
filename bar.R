@@ -176,9 +176,9 @@ bar_bulk_output <- function(df,fl){
   
   # フィッシャーの検定
   # 各条件の平均を導出
-  # it10.mean <- df.mean(df.PT.R.row,df.PT.L.row,"IT_10",1,10)
-  # it40.mean <- df.mean(df.PT.R.row,df.PT.L.row,"IT_40",11,20)
-  # it160.mean <- df.mean(df.PT.R.row,df.PT.L.row,"IT_160",21,30)
+  it10.mean <- df.mean(df.PT.R.row,df.PT.L.row,"IT_10",1,10)
+  it40.mean <- df.mean(df.PT.R.row,df.PT.L.row,"IT_40",11,20)
+  it160.mean <- df.mean(df.PT.R.row,df.PT.L.row,"IT_160",21,30)
   calib <- 1/1000
   # デバッグ
   # print(it10.mean * calib)
