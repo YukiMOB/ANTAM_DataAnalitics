@@ -2,6 +2,7 @@
 ppi <- 300 # resolution of figures
 ofset <- 100
 freq <- 125
+options(scipen=100)
 
 trajectory <- function(df,fl){
   ## 前処理
@@ -27,4 +28,4 @@ trajectory <- function(df,fl){
   }
 }
 
-trajectory(df,fl)
+trajectory(df.downsamp,fl)

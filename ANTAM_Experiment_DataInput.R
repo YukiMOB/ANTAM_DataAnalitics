@@ -18,10 +18,6 @@ readfiles <- function(f,i){
   df$arc <- ifelse(df$arc == 210,180,df$arc)
   df$arc <- ifelse(df$arc == 40,0,df$arc)
   df$arc <- ifelse(df$arc == 30,0,df$arc)
-  # df$arc <- calibration.partical(df,220,180)
-  # df$arc <- calibration.partical(df,40,0)
-  # df$arc <- calibration.partical(df,210,180)
-  # df$arc <- calibration.partical(df,30,0)
   df <- subset(df,df$t > 30000 & df$t < 1800000)
   return(df)
 }
