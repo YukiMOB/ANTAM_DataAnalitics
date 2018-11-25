@@ -12,4 +12,7 @@ residence_time <- function(df,start,end){
 it10.residence_ratio.list <- residence_time(df.downsamp,1,5)
 it40.residence_ratio.list <- residence_time(df.downsamp,6,10)
 it160.residence_ratio.list <- residence_time(df.downsamp,11,15)
+staticLeft.residence_ratio.list <- residence_time(df.downsamp,16,20)
+staticRight.residence_ratio.list <- residence_time(df.downsamp,21,25)
+NoStimulus.residence_ratio.list <- residence_time(df.NoStimulus.downsamp,1,15)
 

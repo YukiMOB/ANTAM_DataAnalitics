@@ -55,3 +55,4 @@ df.NoStimulus <- getdf(fl.NoStimulus)
 # select file path and set file path including sub directory
 setwd("~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験/data")
 path <- "~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験/data"
+
