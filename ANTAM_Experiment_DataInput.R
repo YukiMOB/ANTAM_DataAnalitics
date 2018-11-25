@@ -45,8 +45,13 @@ df <- getdf(fl)
 # path <- "~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_10_ジャーナル追加実験/SS_180
 
 # Nostimulus
-setwd("~/OneDrive - cc.kyoto-su.ac.jp/共有データ/共有データ/修士課程/2018_11_ジャーナル実験_NoStimulus_and_other/NoStimulus")
+setwd("~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験_NoStimulus_and_other/NoStimulus")
 path <- "~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験_NoStimulus_and_other/NoStimulus"
 fl.NoStimulus <- list.files(path,recursive=T, include.dirs=T,pattern = "mouse.*csv")
 df.NoStimulus <- getdf(fl.NoStimulus)
 
+
+# データ解析で結果を保存したいところ
+# select file path and set file path including sub directory
+setwd("~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験/data")
+path <- "~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験/data"
