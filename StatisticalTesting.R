@@ -1,8 +1,3 @@
-library(NSM3)
-# plot(c(1,2,3),c(mean(it160.distance.list),mean(it40.distance.list),mean(it10.distance.list)))
-# plot(c(1,2,3),c(mean(it160.list.velocity_average),mean(it40.list.velocity_average),mean(it10.list.velocity_average)))
-# plot(c(1,2,3),c(mean(it160.residence_ratio.list),mean(it40.residence_ratio.list),mean(it10.residence_ratio.list)))
-
 # クラスカル・ウォリス検定 : 距離
 kruskal.test(x=list(it160.distance.list,it40.distance.list,it10.distance.list))
 kruskal.test(x=list(it160.list.velocity_average,it40.list.velocity_average,it10.list.velocity_average))
