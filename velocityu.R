@@ -14,6 +14,9 @@ velocity_average <- function(df,start,end){
 it10.list.velocity_average <- velocity_average(df.downsamp,1,5)
 it40.list.velocity_average <- velocity_average(df.downsamp,6,10)
 it160.list.velocity_average <- velocity_average(df.downsamp,11,15)
+staticLeft.list.velocity_average <- velocity_average(df.downsamp,16,20)
+staticRight.list.velocity_average <- velocity_average(df.downsamp,21,25)
+NoStimulus.list.Velocity_average <- velocity_average(df.NoStimulus.downsamp,1,15)
 
 # 正規分布かどうかの確認用
-hist(c(it160.list.velocity_average))
+# hist(c(it160.list.velocity_average))

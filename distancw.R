@@ -4,7 +4,7 @@ distance <- function(df,start,end){
   for (i in start:end) {
     x <- subset(df$x,df$id == i)
     y <- subset(df$y,df$id == i)
-    distance <- sum(sqrt(diff(x)^2 + diff(y)^2))
+    distance <- sum(sqrt(diff(x)^2 + diff(y)^2)) / 100 # mmをcmに
     # print(distance)
     list.distance <- c(list.distance,distance)
   }
@@ -15,6 +15,10 @@ distance <- function(df,start,end){
 it10.distance.list <- distance(df.downsamp,1,5)
 it40.distance.list <- distance(df.downsamp,6,10)
 it160.distance.list <- distance(df.downsamp,11,15)
+staticLeft.distance.list <- distance(df.downsamp,16,20)
+staticRight.distance.list <- distance(df.downsamp,21,25)
+NoStimulus.distance.list <- distance(df.NoStimulus.downsamp,1,15)
 
 # 正規分布確認用
 hist(c(it10.distance.list))
+
