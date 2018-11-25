@@ -38,6 +38,15 @@ averaging <- function(n,frq){
 
 ### 基本データ ###
 # ダウンサンプリング
+downdampling <- function(df,freq){
+  n <- seq(1,nrow(df),by = freq)
+  return.downsamp <- data.frame(t = df$t[n], x = averaging(df$x,freq), y = averaging(df$y,freq),id = df$id[n],path = df$id[n],arc = df$arc[n],pos = df$pos[n])
+  return(return.downsamp)
+}
+
+
 n <- seq(1, nrow(df), by = freq)
 df.downsamp <- data.frame(t = df$t[n], x = averaging(df$x,freq), y = averaging(df$y,freq),id = df$id[n],path = df$id[n],arc = df$arc[n],pos = df$pos[n])
+
+df.Nostimulus.downsamp <- downdampling(df.NoStimulus,freq)
 
