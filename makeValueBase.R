@@ -18,21 +18,25 @@ torajectory <- function(df,fl){
   }
 }
 
-averaging <- function(n,frq){
-  n.averaging <- c(0)
-  count <- 1
-  j <- 1
-  for (i in 1:length(n)) {
-    if(count >= frq){
-      count <- 1
-      j <- j + 1
-      n.averaging <- append(n.averaging,0,after = length(n.averaging))
-    }else{
-      n.averaging[j] <- n.averaging[j] + n[i]
-      count <- count + 1
+# ちょっと課題残ったので後回し
+averaging <- function(value,frq,n){
+  ds.list <- c(0)
+  for (i in 1:max(n$id)) {
+    df <- subset(n,n$id == i)
+    ave <- 0
+    ave.list <- c(0)
+    print(df$t[2])
+    for (j in 1:length(df$t)) {
+      if(j %% freq == 0){
+        ave <- ave / freq
+        ave.list <- append(ave.list,ave,after = length(ave.list))
+      }else{
+        ave <- ave + value[j]
+      }
     }
+    ds.list <- append(ds.list,ave.list,after = length(ds.list))
   }
-  return(n.averaging)
+  return(ds.list)
 }
 
 
@@ -40,13 +44,14 @@ averaging <- function(n,frq){
 # ダウンサンプリング
 downdampling <- function(df,freq){
   n <- seq(1,nrow(df),by = freq)
-  return.downsamp <- data.frame(t = df$t[n], x = averaging(df$x,freq), y = averaging(df$y,freq),id = df$id[n],path = df$id[n],arc = df$arc[n],pos = df$pos[n])
+  return.downsamp <- data.frame(t = df$t[n], x = averaging(df$x,freq,df), y = averaging(df$y,freq,df),id = df$id[n],path = df$id[n],arc = df$arc[n],pos = df$pos[n])
   return(return.downsamp)
 }
 
 
-n <- seq(1, nrow(df), by = freq)
-df.downsamp <- data.frame(t = df$t[n], x = averaging(df$x,freq), y = averaging(df$y,freq),id = df$id[n],path = df$id[n],arc = df$arc[n],pos = df$pos[n])
+#n <- seq(1, nrow(df), by = freq)
+#df.downsamp <- data.frame(t = df$t[n], x = averaging(df$x,freq), y = averaging(df$y,freq),id = df$id[n],path = df$id[n],arc = df$arc[n],pos = df$pos[n])
 
-df.Nostimulus.downsamp <- downdampling(df.NoStimulus,freq)
+df.downsamp <- downdampling(df,freq)
+#df.NoStimulus.downsamp <- downdampling(df.NoStimulus,freq)
 

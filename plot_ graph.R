@@ -30,7 +30,11 @@ plot_distance <- function(){
     scale_x_continuous(breaks = c(1,2,3,4,5,6),
                        labels = c("static Left","static Right","160 s","40 s","10 s","No_Stimulus")) +
     geom_line() +
-    geom_errorbar(errors,width = 0.2) + 
+    geom_errorbar(errors,width = 0.2) +
+    theme_bw() +
+    theme(axis.text=element_text(size=18),
+          axis.title=element_text(size=20,face="bold"),
+          legend.position = 'none') +
     xlab("Conditions") +
     ylab("dinstance cm")
     # geom_point(aes(x = conditions,y = value))
@@ -43,13 +47,13 @@ plot_velocity <- function(){
                                       mean(it160.list.velocity_average),
                                       mean(it40.list.velocity_average),
                                       mean(it10.list.velocity_average),
-                                      mean(Nostimulus.list.Velocity_average)),
+                                      mean(NoStimulus.list.Velocity_average)),
                              sd = c(sd(staticLeft.list.velocity_average),
                                     sd(staticRight.list.velocity_average),
                                     sd(it160.list.velocity_average),
                                     sd(it40.list.velocity_average),
                                     sd(it10.list.velocity_average),
-                                    sd(Nostimulus.list.Velocity_average)),
+                                    sd(NoStimulus.list.Velocity_average)),
                              conditions = c(1,2,3,4,5,6))
   errors <- aes(ymax = df.parameter$mean + df.parameter$sd,
                 ymin = df.parameter$mean - df.parameter$sd)
@@ -58,8 +62,12 @@ plot_velocity <- function(){
                        labels = c("static Left","static Right","160 s","40 s","10 s","No_Stimulus")) +
     geom_line() +
     geom_errorbar(errors,width = 0.2) + 
+    theme_bw() +
+    theme(axis.text=element_text(size=18),
+          axis.title=element_text(size=20,face="bold"),
+          legend.position = 'none') +
     xlab("Conditions") +
-    ylab("Velocity cm/s")
+    ylab("Velocity cm/min")
   plot(g)
 }
 
@@ -85,7 +93,12 @@ plot_residence_ratio <- function(){
                        labels = c("static Left","static Right","160 s","40 s","10 s","No_Stimulus")) +
       geom_line() +
       geom_errorbar(errors,width = 0.2) + 
+      theme_bw() +
+      theme(axis.text=element_text(size=18),
+          axis.title=element_text(size=20,face="bold"),
+          legend.position = 'none') +
       xlab("Conditions") +
       ylab("rario of residencetime")
   plot(g)
 }
+
