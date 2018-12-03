@@ -59,11 +59,11 @@ positive_negative_ratio_bar_each_criteria <- function(df,start,end){
   return(c(df.PT.L,df.PT.R))
 }
 
-it30min_R.ratio.PN <- positive_negative_ratio_bar_each_criteria(df,21,25)
-it30min_L.ratio.PN <- positive_negative_ratio_bar_each_criteria(df,16,20)
-it160.ratio.PN <- positive_negative_ratio_bar_each_criteria(df,11,15)
-it40.ratio.PN <- positive_negative_ratio_bar_each_criteria(df,6,10)
-it10.ratio.PN <- positive_negative_ratio_bar_each_criteria(df,1,5)
+it30min_R.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,21,25)
+it30min_L.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,16,20)
+it160.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,11,15)
+it40.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,6,10)
+it10.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,1,5)
 
 
 # ex_bar_plot(df.PT.R,df.PT.L,"IT_10",1,10)

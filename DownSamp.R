@@ -1,6 +1,7 @@
 ofset <- 100
 freq <- 25
 basefreq <- 125
+options(scipen=100)
 
 downdampling <- function(df.original,freq){
   df.return <- as.data.frame(NULL)
@@ -17,10 +18,12 @@ downdampling <- function(df.original,freq){
 
 valueDS <- function(value,n){
   ds.list <- c(0)
-  for (i in 2:length(n)) { # length(n) - 1がうまくいかないので初期値を2に
-    ds.list <- append(ds.list,mean(value[i - 1:i]),after = length(ds.list))
+  ds.list <- append(ds.list,value[1],after = length(ds.list))
+  for (i in 3:length(n)) { # length(n) - 1がうまくいかないので初期値を3に
+    ds.list <- append(ds.list,mean(value[n[i] - 1:n[i]]),after = length(ds.list))
   }
   return(ds.list)
 }
 
 df.downsamp <- downdampling(df,freq)
+df.NoStimulus.downsamp <- downdampling(df.NoStimulus,freq)
