@@ -1,8 +1,7 @@
 # data analysis
 library("ggplot2")
 library("magick")
-
-
+exnum <-c("e","a","b","c","d")
 experiment.condition <- 3
 condition.trial <- 5
 
@@ -60,7 +59,8 @@ positive_negative_ratio_bar_each_criteria <- function(df,start,end){
   return(c(df.PT.L,df.PT.R))
 }
 
-
+it30min_R.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,21,25)
+it30min_L.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,16,20)
 it160.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,11,15)
 it40.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,6,10)
 it10.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,1,5)

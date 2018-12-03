@@ -10,6 +10,8 @@ getdf <- function(fl){
 }
 
 readfiles <- function(f,i){
+  xcalib <- 0.0239
+  ycalib <- 0.0254
   data <- read.csv(f,stringsAsFactors=FALSE)
   df <- data.frame(t = data[,1], x = 0.0239 * data$x, y = 0.0254 * data$y,id = i,path = f,arc = data$arc,pos = data$pos)
   #実験ごとにキャリブレーションが必要であれば実施
@@ -38,17 +40,17 @@ rate <- 12500
 ppi <- 300 # resolution of figures
 
 # select file path and set file path including sub directory
-setwd("~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験/data")
-path <- "~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験/data"
+setwd("~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験/data/")
+path <- "~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験/data/"
 fl <- list.files(path,recursive=T, include.dirs=T,pattern = "mouse.*csv")
 df <- getdf(fl)
 # path <- "~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_10_ジャーナル追加実験/SS_180
 
-# Nostimulus
-setwd("~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験_NoStimulus_and_other/NoStimulus")
-path <- "~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験_NoStimulus_and_other/NoStimulus"
-fl.NoStimulus <- list.files(path,recursive=T, include.dirs=T,pattern = "mouse.*csv")
-df.NoStimulus <- getdf(fl.NoStimulus)
+# # Nostimulus
+# setwd("~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験_NoStimulus_and_other/NoStimulus")
+# path <- "~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験_NoStimulus_and_other/NoStimulus"
+# fl.NoStimulus <- list.files(path,recursive=T, include.dirs=T,pattern = "mouse.*csv")
+# df.NoStimulus <- getdf(fl.NoStimulus)
 
 
 # データ解析で結果を保存したいところ

@@ -28,7 +28,7 @@ plot_distance <- function(){
                 ymin = df.parameter$mean - df.parameter$sd)
   g <- ggplot(df.parameter,aes(x = conditions,y = mean)) +
     scale_x_continuous(breaks = c(1,2,3,4,5,6),
-                       labels = c("static Left","static Right","160 s","40 s","10 s","No_Stimulus")) +
+                       labels = c("30 min Left","30 min Right","160 s","40 s","10 s","No_Stimulus")) +
     geom_line() +
     geom_errorbar(errors,width = 0.2) +
     theme_bw() +
@@ -59,7 +59,7 @@ plot_velocity <- function(){
                 ymin = df.parameter$mean - df.parameter$sd)
   g <- ggplot(df.parameter,aes(x = conditions,y = mean)) +
     scale_x_continuous(breaks = c(1,2,3,4,5,6),
-                       labels = c("static Left","static Right","160 s","40 s","10 s","No_Stimulus")) +
+                       labels = c("30 min Left","30 min Right","160 s","40 s","10 s","No_Stimulus")) +
     geom_line() +
     geom_errorbar(errors,width = 0.2) + 
     theme_bw() +
@@ -90,7 +90,7 @@ plot_residence_ratio <- function(){
                 ymin = df.parameter$mean - df.parameter$sd)
   g <- ggplot(df.parameter,aes(x = conditions,y = mean)) +
     scale_x_continuous(breaks = c(1,2,3,4,5,6),
-                       labels = c("static Left","static Right","160 s","40 s","10 s","No_Stimulus")) +
+                       labels = c("30 min Left","30 min Right","160 s","40 s","10 s","No_Stimulus")) +
       geom_line() +
       geom_errorbar(errors,width = 0.2) + 
       theme_bw() +
