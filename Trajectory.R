@@ -1,16 +1,15 @@
 # data analysis
 ppi <- 300 # resolution of figures
 ofset <- 100
-freq <- 125
 options(scipen=100)
 
-trajectory <- function(df,fl){
+trajectory <- function(dt,fl){
   ## 前処理
-  mem_xy <- c(abs(min(df$x)),abs(min(df$y)),max(df$x),max(df$y))
+  mem_xy <- c(abs(min(dt$x)),abs(min(dt$y)),max(dt$x),max(dt$y))
   traj_abs = max(mem_xy)
   for (i in 1:length(fl)) {
-    x <- subset(df$x,df$id == i)
-    y <- subset(df$y,df$id == i)
+    x <- subset(dt$x,dt$id == i)
+    y <- subset(dt$y,dt$id == i)
     
     # スケールを合わせたデータ
     fname <- sub(".csv","traj_abs.png",fl[i])
@@ -28,4 +27,4 @@ trajectory <- function(df,fl){
   }
 }
 
-trajectory(df.downsamp,fl)
+trajectory(dt,fl)

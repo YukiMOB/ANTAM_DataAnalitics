@@ -5,20 +5,20 @@ exnum <-c("e","a","b","c","d")
 experiment.condition <- 3
 condition.trial <- 5
 
-df.PT.R.row <- as.data.frame(NULL)
-df.PT.L.row <- as.data.frame(NULL)
-positive_negative_ratio_bar_each_criteria <- function(df,start,end){
+dt.PT.R.row <- as.data.frame(NULL)
+dt.PT.L.row <- as.data.frame(NULL)
+positive_negative_ratio_bar_each_criteria <- function(dt,start,end){
   #Sector Size
   SS <- 180
   bw <- 20
   SS <- 90 # sector size
   fz <- 125
-  df.PT.R <- as.data.frame(NULL)
-  df.PT.L <- as.data.frame(NULL)
+  dt.PT.R <- as.data.frame(NULL)
+  dt.PT.L <- as.data.frame(NULL)
   for (i in start:end) {
     # LとRそれぞれからの刺激を受けた時のデータに変換
-    move.angle.SP.L <- subset(diff(df$x),df$id == i & df$arc == 180 & diff(df$x) != 0) #RLeft
-    move.angle.SP.R <- subset(diff(df$x),df$id == i & df$arc == 0 & diff(df$x) != 0) #Right
+    move.angle.SP.L <- subset(diff(dt$x),dt$id == i & dt$arc == 180 & diff(dt$x) != 0) #RLeft
+    move.angle.SP.R <- subset(diff(dt$x),dt$id == i & dt$arc == 0 & diff(dt$x) != 0) #Right
     # 2値化
     move.angle.SP.L <-  ifelse(move.angle.SP.L < 0,-1,1) #Left
     move.angle.SP.R <- ifelse(move.angle.SP.R > 0,1,-1) #Right
@@ -28,15 +28,15 @@ positive_negative_ratio_bar_each_criteria <- function(df,start,end){
       if(sum(subset(move.angle.SP.L,move.angle.SP.L > 0)) + sum(subset(move.angle.SP.L,move.angle.SP.L < 0)) != 0){
         c.PorN.L <- c(sum(subset(abs(move.angle.SP.L),move.angle.SP.L < 0)) / sum(abs(move.angle.SP.L))
                       ,sum(subset(abs(move.angle.SP.L),move.angle.SP.L > 0)) / sum(abs(move.angle.SP.L)))
-        df.set <- data.frame(PorN_Left =c("Positive","Negative"),
+        dt.set <- data.frame(PorN_Left =c("Positive","Negative"),
                              value_Left = c(abs(c.PorN.L[1]),abs(c.PorN.L[2])),ExNum_Left = sprintf("No.%d.%s",i,exnum[i %% 5 + 1]))
-        df.PT.L <- rbind(df.PT.L,df.set)
+        dt.PT.L <- rbind(dt.PT.L,dt.set)
         
         #バイナリの加算データをデータフレーム に格納
-        df.set.row <- data.frame(PorN =c("Positive","Negative"),
+        dt.set.row <- data.frame(PorN =c("Positive","Negative"),
                                  value = c(sum(abs(subset(move.angle.SP.L,move.angle.SP.L < 0))),
                                            sum(abs(subset(move.angle.SP.L,move.angle.SP.L > 0)))),ExNum = sprintf("No.%d.%s",i,exnum[i %% 5 + 1]))
-        df.PT.L.row <- rbind(df.PT.L,df.set)
+        dt.PT.L.row <- rbind(dt.PT.L,dt.set)
       }
     }
     # R
@@ -44,39 +44,39 @@ positive_negative_ratio_bar_each_criteria <- function(df,start,end){
       if(sum(subset(move.angle.SP.R,move.angle.SP.R > 0)) + sum(subset(move.angle.SP.R,move.angle.SP.R < 0)) != 0){
         c.PorN.R <- c(sum(subset(abs(move.angle.SP.R),move.angle.SP.R > 0)) / sum(subset(abs(move.angle.SP.R),move.angle.SP.R > 0 | move.angle.SP.R < 0))
                       ,sum(subset(abs(move.angle.SP.R),move.angle.SP.R < 0)) / sum(subset(abs(move.angle.SP.R),move.angle.SP.R > 0 | move.angle.SP.R < 0)))
-        df.set <- data.frame(PorN_Right =c("Positive","Negative"),
+        dt.set <- data.frame(PorN_Right =c("Positive","Negative"),
                              value_Right = c(abs(c.PorN.R[1]),abs(c.PorN.R[2])),ExNum_Right = sprintf("No.%d.%s",i,exnum[i %% 5 + 1]))
-        df.PT.R <- rbind(df.PT.R,df.set)
+        dt.PT.R <- rbind(dt.PT.R,dt.set)
         
         #バイナリの加算データをデータフレーム に格納
-        df.set.row <- data.frame(PorN =c("Positive","Negative"),
+        dt.set.row <- data.frame(PorN =c("Positive","Negative"),
                                  value = c(sum(abs(subset(move.angle.SP.R,move.angle.SP.R > 0))),
                                            sum(abs(subset(move.angle.SP.R,move.angle.SP.R < 0)))),ExNum = sprintf("No.%d.%s",i,exnum[i %% 5 + 1]))
-        df.PT.R.row <- rbind(df.PT.R.row,df.set.row)
+        dt.PT.R.row <- rbind(dt.PT.R.row,dt.set.row)
       }
     }
   }
-  return(c(df.PT.L,df.PT.R))
+  return(c(dt.PT.L,dt.PT.R))
 }
 
-it30min_R.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,21,25)
-it30min_L.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,16,20)
-it160.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,11,15)
-it40.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,6,10)
-it10.ratio.PN <- positive_negative_ratio_bar_each_criteria(df.downsamp,1,5)
+it30min_R.ratio.PN <- positive_negative_ratio_bar_each_criteria(dt,21,25)
+it30min_L.ratio.PN <- positive_negative_ratio_bar_each_criteria(dt,16,20)
+it160.ratio.PN <- positive_negative_ratio_bar_each_criteria(dt,11,15)
+it40.ratio.PN <- positive_negative_ratio_bar_each_criteria(dt,6,10)
+it10.ratio.PN <- positive_negative_ratio_bar_each_criteria(dt,1,5)
 
 
-# ex_bar_plot(df.PT.R,df.PT.L,"IT_10",1,10)
-# ex_bar_plot(df.PT.R,df.PT.L,"IT_40",11,20)
-# ex_bar_plot(df.PT.R,df.PT.L,"IT_160",21,30)
-# ex_bar_plot(df.PT.R,df.PT.L,"IT_staticLefft",31,40)
-# ex_bar_plot(df.PT.R,df.PT.L,"IT_staticRight",41,50)
+# ex_bar_plot(dt.PT.R,dt.PT.L,"IT_10",1,10)
+# ex_bar_plot(dt.PT.R,dt.PT.L,"IT_40",11,20)
+# ex_bar_plot(dt.PT.R,dt.PT.L,"IT_160",21,30)
+# ex_bar_plot(dt.PT.R,dt.PT.L,"IT_staticLefft",31,40)
+# ex_bar_plot(dt.PT.R,dt.PT.L,"IT_staticRight",41,50)
 
 # フィッシャーの検定
 # 各条件の平均を導出
-# it10.mean <- df.mean(df.PT.R.row,df.PT.L.row,"IT_10",1,10)
-# it40.mean <- df.mean(df.PT.R.row,df.PT.L.row,"IT_40",11,20)
-# it160.mean <- df.mean(df.PT.R.row,df.PT.L.row,"IT_160",21,30)
+# it10.mean <- dt.mean(dt.PT.R.row,dt.PT.L.row,"IT_10",1,10)
+# it40.mean <- dt.mean(dt.PT.R.row,dt.PT.L.row,"IT_40",11,20)
+# it160.mean <- dt.mean(dt.PT.R.row,dt.PT.L.row,"IT_160",21,30)
 # calib <- 1/1000
 # デバッグ
 # print(it10.mean * calib)
