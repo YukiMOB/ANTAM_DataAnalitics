@@ -17,3 +17,4 @@ getacf <- function(df,fl){
     dev.off()
   }
 }
+getacf(dt,fl)

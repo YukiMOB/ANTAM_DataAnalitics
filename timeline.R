@@ -134,4 +134,4 @@ averaging <- function(n,frq){
 #   xlab(NULL)+ylab(NULL)
 # ggsave(file = fname, plot = p)
 
-timeline_diffx(df,fl)
+timeline_diffx(df.downsamp,fl)

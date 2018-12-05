@@ -1,19 +1,19 @@
 ofset <- 100
-freq <- 25
+freq <- 5
 basefreq <- 125
 options(scipen=100)
 
-downdampling <- function(df.original,freq){
-  df.return <- as.data.frame(NULL)
-  for (i in 1:max(df.original$id)) {
-    df <-  subset(df.original,df.original$id == i)
-    n <- seq(1,nrow(df),by = freq)
-    x.downsamp<- valueDS(df$x,n)
-    y.downsamp <- valueDS(df$y,n)
-    df.ds <- data.frame(t = df$t[n], x = x.downsamp, y = y.downsamp,id = df$id[n],path = df$id[n],arc = df$arc[n],pos = df$pos[n])
-    df.return <- rbind(df.return,df.ds)
+downdampling <- function(dt.original,freq){
+  dt.return <- as.data.frame(NULL)
+  for (i in 1:max(dt.original$id)) {
+    dt <-  subset(dt.original,dt.original$id == i)
+    n <- seq(1,nrow(dt),by = freq)
+    x.downsamp<- valueDS(dt$x,n)
+    y.downsamp <- valueDS(dt$y,n)
+    dt.ds <- data.frame(t = dt$t[n], x = x.downsamp, y = y.downsamp,id = dt$id[n],path = dt$id[n],arc = dt$arc[n],pos = dt$pos[n])
+    dt.return <- rbind(dt.return,dt.ds)
   }
-  return(df.return)
+  return(dt.return)
 }
 
 valueDS <- function(value,n){
@@ -25,5 +25,5 @@ valueDS <- function(value,n){
   return(ds.list)
 }
 
-df.downsamp <- downdampling(df,freq)
-df.NoStimulus.downsamp <- downdampling(df.NoStimulus,freq)
+dt.downsamp <- downdampling(dt,freq)
+dt.NoStimulus.downsamp <- downdampling(dt.NoStimulus,freq)

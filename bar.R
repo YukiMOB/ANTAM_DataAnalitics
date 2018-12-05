@@ -261,5 +261,5 @@ df.mean <- function(df.PT.R,df.PT.L,exname,first,end){
                     valueL.Pos = df.mean.L[1] * 16,valueL.Nega = df.mean.L[2] * 16))
 }
 
-bar_bulk_output(df.downsamp,fl)
+bar_bulk_output(dt,fl)
 
