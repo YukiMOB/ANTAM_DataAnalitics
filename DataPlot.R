@@ -1,5 +1,3 @@
 # データ解析,データプロット系の処理の読み込みと実行
-source("Trajectory.R")
-source("timeline.R")
-source("histgram.R")
-source("bar.R")
+
+exNumlist <- c(1,6,11,18,24,29)
