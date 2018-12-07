@@ -1,7 +1,7 @@
 library(data.table)
 library(dplyr)
 
-freq <- 5
+freq <- 25
 options(scipen=100)
 
 ############ function #######################################

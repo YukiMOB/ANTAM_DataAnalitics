@@ -1,5 +1,5 @@
 # 比率の二項検定の実施
-
+options(digits = 4)
 ratio.binom.test <- function(num){
   num <- as.integer(num * 100) # 比率を整数値に変換
   out <- binom.test(c(num,100 - num),p = 0.5)
@@ -15,3 +15,4 @@ get.pValue.binom.test <- function(value.lis){
   print(value.lis)
   return(p.list)
 }
+
