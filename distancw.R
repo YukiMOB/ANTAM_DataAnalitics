@@ -18,7 +18,7 @@ it40.distance.list <- distance(dt,6,10)
 it160.distance.list <- distance(dt,11,15)
 staticLeft.distance.list <- distance(dt,16,20)
 staticRight.distance.list <- distance(dt,21,25)
-# NoStimulus.distance.list <- distance(dt.NoStimulus.downsamp,1,15)
+NoStimulus.distance.list <- distance(dt.NoStimulus,1,15)
 
 # 正規分布確認用
 # hist(c(it10.distance.list))
