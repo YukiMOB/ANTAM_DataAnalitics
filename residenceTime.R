@@ -9,10 +9,10 @@ residence_time <- function(dt,start,end){
   return(list.no_residence)
 }
 # 滞留時間と非滞留時間の比率(滞留時間/全体)
-it10.residence_ratio.list <- residence_time(dt,1,5)
-it40.residence_ratio.list <- residence_time(dt,6,10)
-it160.residence_ratio.list <- residence_time(dt,11,15)
-staticLeft.residence_ratio.list <- residence_time(dt,16,20)
-staticRight.residence_ratio.list <- residence_time(dt,21,25)
+it10.residence_ratio.list <- residence_time(dt,exNumlist[1],exNumlist[2])
+it40.residence_ratio.list <- residence_time(dt,exNumlist[2] + 1,exNumlist[3])
+it160.residence_ratio.list <- residence_time(dt,exNumlist[3] + 1,exNumlist[4])
+staticLeft.residence_ratio.list <- residence_time(dt,exNumlist[4] + 1,exNumlist[5])
+staticRight.residence_ratio.list <- residence_time(dt,exNumlist[5] + 1,exNumlist[6])
 NoStimulus.residence_ratio.list <- residence_time(dt,1,15)
 

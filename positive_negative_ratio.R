@@ -50,3 +50,5 @@ positive_negative_ratio_bar_each_criteria <- function(dt,start,end){
   }
   return(c(dt.PT.L,dt.PT.R))
 }
+
+it160.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,1,6)
