@@ -13,11 +13,11 @@ distance <- function(dt,start,end){
 }
 # 統計解析
 # 5試行ごとなので
-it10.distance.list <- distance(dt,1,5)
-it40.distance.list <- distance(dt,6,10)
-it160.distance.list <- distance(dt,11,15)
-staticLeft.distance.list <- distance(dt,16,20)
-staticRight.distance.list <- distance(dt,21,25)
+it10.distance.list <- distance(dt,exNumlist[1],exNumlist[2])
+it40.distance.list <- distance(dt,exNumlist[2] + 1,exNumlist[3])
+it160.distance.list <- distance(dt,exNumlist[3] + 1,exNumlist[4])
+staticLeft.distance.list <- distance(dt,exNumlist[4] + 1,exNumlist[5])
+staticRight.distance.list <- distance(dt,exNumlist[5] + 1,exNumlist[6])
 NoStimulus.distance.list <- distance(dt.NoStimulus,1,15)
 
 # 正規分布確認用
