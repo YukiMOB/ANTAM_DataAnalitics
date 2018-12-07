@@ -70,11 +70,11 @@ fl <- list.files(path,recursive=T, include.dirs=T,pattern = "mouse.*csv")
 dt <- getdt(fl)
 # path <- "~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_10_ジャーナル追加実験/SS_180
 
-# # Nostimulus
-# setwd("~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験_NoStimulus_and_other/NoStimulus")
-# path <- "~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験_NoStimulus_and_other/NoStimulus"
-# fl.NoStimulus <- list.files(path,recursive=T, include.dirs=T,pattern = "mouse.*csv")
-# dt.NoStimulus <- getdt(fl.NoStimulus)
+# Nostimulus
+setwd("~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験_NoStimulus_and_other/NoStimulus")
+path <- "~/OneDrive - cc.kyoto-su.ac.jp/共有データ/修士課程/2018_11_ジャーナル実験_NoStimulus_and_other/NoStimulus"
+fl.NoStimulus <- list.files(path,recursive=T, include.dirs=T,pattern = "mouse.*csv")
+dt.NoStimulus <- getdt(fl.NoStimulus)
 
 
 # データ解析で結果を保存したいところ

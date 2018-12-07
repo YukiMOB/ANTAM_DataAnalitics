@@ -28,7 +28,7 @@ data <- c(
   subset(it40.ratio.PN$value_Left,it40.ratio.PN$PorN_Left == "Negative"),      # 第 2 群のデータ，10 例
   subset(it10.ratio.PN$value_Left,it10.ratio.PN$PorN_Left == "Negative")    # 第 3 群のデータ，10 例
 )
-group <- rep(1:4, c(5,5, 5, 5))  
+group <- rep(1:4, c(6,5,7,6))  
 
 Steel.Dwass(data, group)
 
