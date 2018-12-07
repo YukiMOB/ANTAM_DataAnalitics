@@ -1,15 +1,5 @@
 #Steel.Dwass(it160.distance.list,it40.distance.list,it10.distance.list)
 
-# スティール・ドゥワスの多重比較
-# data <- c(
-#   it160.residence_ratio.list, # 第 1 群のデータ，11 例
-#   it40.residence_ratio.list,      # 第 2 群のデータ，10 例
-#   it10.residence_ratio.list    # 第 3 群のデータ，10 例
-# )
-# group <- rep(1:3, c(5, 5, 5))                     # 群の識別変数
-
-
-
 Steel.Dwass <- function(data,group)
 {
   OK <- complete.cases(data, group)
