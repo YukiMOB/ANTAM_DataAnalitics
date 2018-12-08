@@ -11,6 +11,7 @@ dt.PT.L.row <- as.data.frame(NULL)
 positive_negative_ratio_merge_LRStimulus <- function(dt,start,end){
   dt.PT.R <- as.data.frame(NULL)
   dt.PT.L <- as.data.frame(NULL)
+  negative.ratio <- c()
   for (i in start:end) {
     # LとRそれぞれからの刺激を受けた時のデータに変換
     move.angle.SP.L <- subset(diff(dt$x),dt$id == i & dt$arc == 180 & diff(dt$x) != stop_motion) #RLeft
@@ -23,14 +24,16 @@ positive_negative_ratio_merge_LRStimulus <- function(dt,start,end){
     
     if(length(stimulus.move) != 0){
       # ここに処理を書く
+      negative.ratio <- c(negative.ratio,sum(subset(abs(stimulus.move),stimulus.move < 0)) / sum(abs(stimulus.move))) 
+      # バイナリ化した時のnegativeの値の総和 / 全体の総和 
     }
   }
-  return(c(dt.PT.L,dt.PT.R))
+  return(negative.ratio)
 }
 
 # Pos/Nega Ratio L stimulus or R stimulus
-static_right.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[5] + 1,exNumlist[6])
-static_left.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[4] + 1,exNumlist[5])
-it160.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[3] + 1,exNumlist[4])
-it40.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[2] + 1,exNumlist[3])
-it10.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[1],exNumlist[2])
+static_right.PN.Ratio.list <- positive_negative_ratio_merge_LRStimulus(dt,exNumlist[5] + 1,exNumlist[6])
+static_left.PN.Ratio.list <- positive_negative_ratio_merge_LRStimulus(dt,exNumlist[4] + 1,exNumlist[5])
+it160.PN.Ratio.list <- positive_negative_ratio_merge_LRStimulus(dt,exNumlist[3] + 1,exNumlist[4])
+it40.PN.Ratio.list <- positive_negative_ratio_merge_LRStimulus(dt,exNumlist[2] + 1,exNumlist[3])
+it10.PN.Ratio.list <- positive_negative_ratio_merge_LRStimulus(dt,exNumlist[1],exNumlist[2])
