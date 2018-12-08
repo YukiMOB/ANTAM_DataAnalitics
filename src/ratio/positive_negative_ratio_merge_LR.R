@@ -1,4 +1,6 @@
 # data analysis
+
+# 刺激を提示しているときの移動の光に対するネガティブ比を導出,L刺激，R刺激では分けない
 library("ggplot2")
 library("magick")
 
@@ -6,7 +8,7 @@ stop_motion <- 0 # ダンゴムシが停止している定義域のMAX値
 
 dt.PT.R.row <- as.data.frame(NULL)
 dt.PT.L.row <- as.data.frame(NULL)
-positive_negative_ratio_bar_each_criteria <- function(dt,start,end){
+positive_negative_ratio_merge_LRStimulus <- function(dt,start,end){
   dt.PT.R <- as.data.frame(NULL)
   dt.PT.L <- as.data.frame(NULL)
   for (i in start:end) {
