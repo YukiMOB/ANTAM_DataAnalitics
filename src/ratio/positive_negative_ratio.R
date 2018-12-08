@@ -2,6 +2,8 @@
 library("ggplot2")
 library("magick")
 
+stop_motion <- 0 # ダンゴムシが停止している定義域のMAX値
+
 dt.PT.R.row <- as.data.frame(NULL)
 dt.PT.L.row <- as.data.frame(NULL)
 positive_negative_ratio_bar_each_criteria <- function(dt,start,end){
@@ -9,8 +11,8 @@ positive_negative_ratio_bar_each_criteria <- function(dt,start,end){
   dt.PT.L <- as.data.frame(NULL)
   for (i in start:end) {
     # LとRそれぞれからの刺激を受けた時のデータに変換
-    move.angle.SP.L <- subset(diff(dt$x),dt$id == i & dt$arc == 180 & diff(dt$x) != 0) #RLeft
-    move.angle.SP.R <- subset(diff(dt$x),dt$id == i & dt$arc == 0 & diff(dt$x) != 0) #Right
+    move.angle.SP.L <- subset(diff(dt$x),dt$id == i & dt$arc == 180 & diff(dt$x) != stop_motion) #RLeft
+    move.angle.SP.R <- subset(diff(dt$x),dt$id == i & dt$arc == 0 & diff(dt$x) != stop_motion) #Right
     # 2値化
     move.angle.SP.L <-  ifelse(move.angle.SP.L < 0,-1,1) #Left
     move.angle.SP.R <- ifelse(move.angle.SP.R > 0,1,-1) #Right
@@ -51,9 +53,9 @@ positive_negative_ratio_bar_each_criteria <- function(dt,start,end){
   return(c(dt.PT.L,dt.PT.R))
 }
 
+# Pos/Nega Ratio L stimulus or R stimulus
 static_right.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[5] + 1,exNumlist[6])
 static_left.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[4] + 1,exNumlist[5])
 it160.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[3] + 1,exNumlist[4])
 it40.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[2] + 1,exNumlist[3])
 it10.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[1],exNumlist[2])
-
