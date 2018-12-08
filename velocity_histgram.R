@@ -1,3 +1,5 @@
+library(ggplot2)
+
 # 速度の閾値を導出するためのプログラム
 
 get.velocity <- function(dt){
@@ -12,5 +14,10 @@ get.velocity <- function(dt){
   }
   return(v)
 }
-v <- get.velocity(dt)
-hist(v)
+v.df <- data.frame(velocity = get.velocity(dt))
+
+g <- ggplot(v.df,aes(x = velocity))
+g <- g + 
+     geom_histogram(binwidth = 0.2) +
+     scale_x_continuous(breaks=seq(0,15,0.5))
+plot(g)
