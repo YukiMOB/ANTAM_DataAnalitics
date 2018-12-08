@@ -55,8 +55,8 @@ positive_negative_ratio_bar_each_criteria <- function(dt,start,end){
 }
 
 # Pos/Nega Ratio L stimulus or R stimulus
-static_right.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[5] + 1,exNumlist[6])
-static_left.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[4] + 1,exNumlist[5])
-it160.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[3] + 1,exNumlist[4])
-it40.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[2] + 1,exNumlist[3])
-it10.PN.Ratio.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[1],exNumlist[2])
+static_right.PN.Ratio.LR.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[5] + 1,exNumlist[6])
+static_left.PN.Ratio.LR.list <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[4] + 1,exNumlist[5])
+it160.PN.Ratio.list.LR <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[3] + 1,exNumlist[4])
+it40.PN.Ratio.list.LR <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[2] + 1,exNumlist[3])
+it10.PN.Ratio.list.LR <- positive_negative_ratio_bar_each_criteria(dt,exNumlist[1],exNumlist[2])
