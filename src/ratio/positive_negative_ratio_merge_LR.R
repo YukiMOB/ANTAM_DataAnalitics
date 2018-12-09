@@ -17,11 +17,10 @@ positive_negative_ratio_merge_LRStimulus <- function(dt,start,end){
     move.angle.SP.L <- subset(diff(dt$x),dt$id == i & dt$arc == 180 & diff(dt$x) != stop_motion) #RLeft
     move.angle.SP.R <- subset(diff(dt$x),dt$id == i & dt$arc == 0 & diff(dt$x) != stop_motion) #Right
     # 2値化
-    move.angle.SP.L <-  ifelse(move.angle.SP.L < 0,-1,1) #Left
+    move.angle.SP.L <-  ifelse(move.angle.SP.L < 0,1,-1) #Left
     move.angle.SP.R <- ifelse(move.angle.SP.R > 0,1,-1) #Right
     # 2値化 これをマージする
-    stimulus.move <- move.angle.SP.L + move.angle.SP.R
-    
+    stimulus.move <- c(move.angle.SP.L,move.angle.SP.R)
     if(length(stimulus.move) != 0){
       # ここに処理を書く
       negative.ratio <- c(negative.ratio,sum(subset(abs(stimulus.move),stimulus.move < 0)) / sum(abs(stimulus.move))) 
