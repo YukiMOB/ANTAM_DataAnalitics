@@ -15,14 +15,14 @@ positive_negative_ratio_bar_each_criteria <- function(dt,start,end){
     move.angle.SP.L <- subset(diff(dt$x),dt$id == i & dt$arc == 180 & diff(dt$x) != stop_motion) #RLeft
     move.angle.SP.R <- subset(diff(dt$x),dt$id == i & dt$arc == 0 & diff(dt$x) != stop_motion) #Right
     # 2値化
-    move.angle.SP.L <-  ifelse(move.angle.SP.L < 0,-1,1) #Left
+    move.angle.SP.L <-  ifelse(move.angle.SP.L < 0,1,-1) #Left
     move.angle.SP.R <- ifelse(move.angle.SP.R > 0,1,-1) #Right
     
     # L
     if(length(move.angle.SP.L) != 0){
       if(sum(subset(move.angle.SP.L,move.angle.SP.L > 0)) + sum(subset(move.angle.SP.L,move.angle.SP.L < 0)) != 0){
-        c.PorN.L <- c(sum(subset(abs(move.angle.SP.L),move.angle.SP.L < 0)) / sum(abs(move.angle.SP.L))
-                      ,sum(subset(abs(move.angle.SP.L),move.angle.SP.L > 0)) / sum(abs(move.angle.SP.L)))
+        c.PorN.L <- c(sum(subset(abs(move.angle.SP.L),move.angle.SP.L > 0)) / sum(abs(move.angle.SP.L))
+                      ,sum(subset(abs(move.angle.SP.L),move.angle.SP.L < 0)) / sum(abs(move.angle.SP.L)))
         dt.set <- data.frame(PorN_Left =c("Positive","Negative"),
                              value_Left = c(abs(c.PorN.L[1]),abs(c.PorN.L[2])),ExNum_Left = sprintf("No.%d.%s",i,exnum[i %% 5 + 1]))
         dt.PT.L <- rbind(dt.PT.L,dt.set)
