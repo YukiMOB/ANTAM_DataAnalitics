@@ -23,16 +23,17 @@ positive_negative_ratio_merge_LRStimulus <- function(dt,start,end){
     stimulus.move <- c(move.angle.SP.L,move.angle.SP.R)
     if(length(stimulus.move) != 0){
       # ここに処理を書く
-      negative.ratio <- c(negative.ratio,sum(subset(abs(stimulus.move),stimulus.move < 0)) / sum(abs(stimulus.move))) 
+      negative.ratio <- c(negative.ratio,sum(subset(abs(stimulus.move),stimulus.move < 0)) / length(abs(stimulus.move))) 
       # バイナリ化した時のnegativeの値の総和 / 全体の総和 
+    }else{
+      negative.ratio <- c(negative.ratio,0)
     }
   }
   return(negative.ratio)
 }
 
 # Pos/Nega Ratio L stimulus or R stimulus
-static_right.PN.Ratio.list <- positive_negative_ratio_merge_LRStimulus(dt,exNumlist[5] + 1,exNumlist[6])
-static_left.PN.Ratio.list <- positive_negative_ratio_merge_LRStimulus(dt,exNumlist[4] + 1,exNumlist[5])
+static.PN.Ratio.list <- positive_negative_ratio_merge_LRStimulus(dt,exNumlist[4] + 1,exNumlist[6])
 it160.PN.Ratio.list <- positive_negative_ratio_merge_LRStimulus(dt,exNumlist[3] + 1,exNumlist[4])
 it40.PN.Ratio.list <- positive_negative_ratio_merge_LRStimulus(dt,exNumlist[2] + 1,exNumlist[3])
 it10.PN.Ratio.list <- positive_negative_ratio_merge_LRStimulus(dt,exNumlist[1],exNumlist[2])
