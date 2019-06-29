@@ -12,7 +12,7 @@ residence_time <- function(dt,start,end){
 it10.residence_ratio.list <- residence_time(dt,exNumlist[1],exNumlist[2])
 it40.residence_ratio.list <- residence_time(dt,exNumlist[2] + 1,exNumlist[3])
 it160.residence_ratio.list <- residence_time(dt,exNumlist[3] + 1,exNumlist[4])
-staticLeft.residence_ratio.list <- residence_time(dt,exNumlist[4] + 1,exNumlist[5])
-staticRight.residence_ratio.list <- residence_time(dt,exNumlist[5] + 1,exNumlist[6])
+static.residence_ratio.list <- residence_time(dt,exNumlist[4] + 1,exNumlist[6])
+# staticRight.residence_ratio.list <- residence_time(dt,exNumlist[5] + 1,exNumlist[6])
 NoStimulus.residence_ratio.list <- residence_time(dt,1,15)
 

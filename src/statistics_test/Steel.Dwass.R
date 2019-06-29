@@ -23,3 +23,4 @@ Steel.Dwass <- function(data,group)
   return(result)
 }
 
+# Steel.Dwass(it160.PN.Ratio.list,it40.PN.Ratio.list,it10.PN.Ratio.list)

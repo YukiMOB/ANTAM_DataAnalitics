@@ -22,6 +22,7 @@ kruskal.test(x=list(staticLeft.list.velocity_average,staticRight.list.velocity_a
 #滞留時間
 kruskal.test(x=list(staticLeft.residence_ratio.list,staticRight.residence_ratio.list,it160.residence_ratio.list,it40.residence_ratio.list,it10.residence_ratio.list,NoStimulus.residence_ratio.list))
 
+
 # L
 kruskal.test(x=list(subset(static_left.PN.Ratio.list$value_Left,static_left.PN.Ratio.list$PorN_Left == "Negative")
                     ,subset(it160.PN.Ratio.list$value_Left,it160.PN.Ratio.list$PorN_Left == "Negative")
@@ -39,7 +40,7 @@ kruskal.test(x=list(subset(static_right.PN.Ratio.list$value_Right,static_right.P
 
 # Negative / Positive
 data <- c(
-  subset(static_left.PN.Ratio.list$value_Left,static_left.PN.Ratio.list$PorN_Left == "Negative"),
+  # subset(static_left.PN.Ratio.list$value_Left,static_left.PN.Ratio.list$PorN_Left == "Negative"),
   subset(it160.PN.Ratio.list$value_Left,it160.PN.Ratio.list$PorN_Left == "Negative"), # 第 1 群のデータ，11 例
   subset(it40.PN.Ratio.list$value_Left,it40.PN.Ratio.list$PorN_Left == "Negative"),      # 第 2 群のデータ，10 例
   subset(it10.PN.Ratio.list$value_Left,it10.PN.Ratio.list$PorN_Left == "Negative")    # 第 3 群のデータ，10 例
@@ -61,13 +62,18 @@ Steel.Dwass(data, group)
 # residence time
 # スティール・ドゥワスの多重比較
 data <- c(
-  staticLeft.residence_ratio.list,
-  staticRight.residence_ratio.list,
+  # staticLeft.residence_ratio.list,
+  # staticRight.residence_ratio.list,
   it160.residence_ratio.list, # 第 1 群のデータ，11 例
   it40.residence_ratio.list,      # 第 2 群のデータ，10 例
   it10.residence_ratio.list    # 第 3 群のデータ，10 例
 )
 group <- rep(1:5, c(6,5,7,5,6))  
 Steel.Dwass(data, group)
-# group <- rep(1:3, c(5, 5, 5))                     # 群の識別変数
+
+# 光量
+data <- c(
+  it160.PN.Ratio.list,it40.PN.Ratio.list,it10.PN.Ratio.list
+)
+group <- rep(1:3, c(5, 5, 5))                     # 群の識別変数
 
